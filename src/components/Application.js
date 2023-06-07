@@ -2,26 +2,40 @@ import React, { useState, useEffect } from "react";
 import "../components/Application.scss";
 import DayList from "./DayList";
 import axios from 'axios';
+import {getAppointmentsForDay} from "helpers/selectors";
 
 export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
-    days: []
+    days: [],
+    appointments: {}
   });
   const setDay = day => setState({ ...state, day });
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:8001/api/days");
-        setState(prevState => ({ ...prevState, days: response.data }));
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const [daysResponse, appointmentsResponse, interviewersResponse] = await Promise.all([
+        axios.get("http://localhost:8001/api/days"),
+        axios.get("http://localhost:8001/api/appointments"),
+        axios.get("http://localhost:8001/api/interviewers")
+      ]);
 
-    fetchData();
-  }, []);
+      setState(prev => ({
+        ...prev,
+        days: daysResponse.data,
+        appointments: appointmentsResponse.data,
+        interviewers: interviewersResponse.data
+      }));
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  fetchData();
+}, []);
+
 
   return (
     <main className="layout">
