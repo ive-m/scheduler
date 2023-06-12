@@ -1,41 +1,51 @@
 import React, { useState, useEffect } from "react";
 import "../components/Application.scss";
+import Appointment from "./Appointment";
 import DayList from "./DayList";
 import axios from 'axios';
-import {getAppointmentsForDay} from "helpers/selectors";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 
 export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    appointments: {}
+    appointments: {},
+    interviewers: {}
   });
-  const setDay = day => setState({ ...state, day });
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
 
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const [daysResponse, appointmentsResponse, interviewersResponse] = await Promise.all([
-        axios.get("http://localhost:8001/api/days"),
-        axios.get("http://localhost:8001/api/appointments"),
-        axios.get("http://localhost:8001/api/interviewers")
-      ]);
-
-      setState(prev => ({
-        ...prev,
-        days: daysResponse.data,
-        appointments: appointmentsResponse.data,
-        interviewers: interviewersResponse.data
-      }));
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
+  //const setDay = day => setState({ ...state, day });
+  const setDay = day => {
+    setState(prevState => ({
+      ...prevState,
+      day: day
+    }));
   };
+  
 
-  fetchData();
-}, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [daysResponse, appointmentsResponse, interviewersResponse] = await Promise.all([
+          axios.get("http://localhost:8001/api/days"),
+          axios.get("http://localhost:8001/api/appointments"),
+          axios.get("http://localhost:8001/api/interviewers")
+        ]);
 
+        setState(prev => ({
+          ...prev,
+          days: daysResponse.data,
+          appointments: appointmentsResponse.data,
+          interviewers: interviewersResponse.data
+        }));
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
 
   return (
     <main className="layout">
@@ -47,7 +57,7 @@ useEffect(() => {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-          <DayList days={state.days} day={state.day} setDay={setDay} />
+        <DayList days={state.days} day={state.day} setDay={setDay} />
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
@@ -57,7 +67,17 @@ useEffect(() => {
       </section>
 
       <section className="schedule">
-        {/* Replace this with the schedule elements during the "The Scheduler" activity. */}
+        {dailyAppointments.map(appointment => {
+          const interview = getInterview(state, appointment.interview);
+          return (
+            <Appointment
+              key={appointment.id}
+              id={appointment.id}
+              time={appointment.time}
+              interview={interview}
+            />
+          );
+        })}
       </section>
     </main>
   );
