@@ -37,6 +37,8 @@ export default function Application(props) {
           appointments: appointmentsResponse.data,
           interviewers: interviewersResponse.data
         }));
+        console.log('Appointments:', appointmentsResponse.data);
+        console.log('Interviewers:', interviewersResponse.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
