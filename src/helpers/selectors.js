@@ -34,12 +34,12 @@ export function getAppointmentsForDay(state, day) {
 
   export function getInterviewersForDay(state, day) {
     const { days, interviewers } = state;
-    const filteredDay = days.find(item => day === item.name);
+    const selectedDay = days.find(item => day === item.name);
   
-    if (days.length < 1 || filteredDay === undefined) {
+    if (days.length < 1 || selectedDay === undefined) {
       return [];
     }
-    const daysInterviewers = filteredDay.interviewers.map(
+    const daysInterviewers = selectedDay.interviewers.map(
       interviewer => interviewers[interviewer]
     );
     return daysInterviewers;

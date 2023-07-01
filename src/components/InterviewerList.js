@@ -2,7 +2,8 @@ import React from "react";
 import InterviewerListItem from "./InterviewerListItem";
 
 export default function InterviewerList(props) {
-  console.log('PROPS INTERVIEWER', props);
+  
+  console.log("InterviewerList props:", props);
 
   const interviewerList = props.interviewers.map((interviewer) => (
     <InterviewerListItem
