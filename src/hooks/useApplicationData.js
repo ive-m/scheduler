@@ -40,8 +40,8 @@ export default function useApplicationData() {
   }, []);
 
   useEffect(() => {
-    updateSpots(state.days, state.appointments);
-  }, [state.appointments, state.days]);
+    updateSpots();
+  }, [state.appointments]);
 
   function bookInterview(id, interview) {
     const appointment = {
@@ -53,12 +53,10 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
-    return axios.put(`/api/appointments/${id}`, { interview })
+    return axios
+      .put(`http://localhost:8001/api/appointments/${id}`, { interview })
       .then(() => {
-        setState((prevState) => ({
-          ...prevState,
-          appointments
-        }));
+        setState((prevState) => ({ ...prevState, appointments }));
       });
   }
 
@@ -72,31 +70,28 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
-    return axios.delete(`/api/appointments/${id}`)
+    return axios
+      .delete(`http://localhost:8001/api/appointments/${id}`)
       .then(() => {
-        setState((prevState) => ({
-          ...prevState,
-          appointments
-        }));
+        setState((prevState) => ({ ...prevState, appointments }));
       });
   }
 
-  function updateSpots(days, appointments) {
+  function updateSpots() {
     setState((prevState) => {
       const updatedDays = prevState.days.map((day) => {
         const updatedSpots = day.appointments.reduce((spotCount, appointmentId) => {
-          if (appointments[appointmentId] && !appointments[appointmentId].interview) {
+          if (!prevState.appointments[appointmentId].interview) {
             return spotCount + 1;
           }
           return spotCount;
         }, 0);
         return { ...day, spots: updatedSpots };
       });
-  
+
       return { ...prevState, days: updatedDays };
     });
   }
-  
 
   return {
     state,

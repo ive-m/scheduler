@@ -17,6 +17,7 @@ export default function Application(props) {
 
   const appointments = getAppointmentsForDay(state, state.day).map(
     appointment => {
+      
       return (
         <Appointment
           key={appointment.id}
@@ -27,9 +28,10 @@ export default function Application(props) {
           cancelInterview={cancelInterview}
         />
       );
+      
+
     }
   );
-
   return (
     <main className="layout">
       <section className="sidebar">

@@ -2,7 +2,7 @@ import React from "react";
 import DayListItem from "components/DayListItem";
 
 export default function DayList(props) {
-  console.log("PROPS", props);
+ 
 
   if (!props.days) {
     return null; // Return null or another fallback UI if props.days is not defined

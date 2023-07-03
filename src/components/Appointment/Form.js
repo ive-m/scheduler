@@ -21,7 +21,7 @@ const Form = (props) => {
 
   
   function validate() {
-    if (student === "") {
+    if (student.trim() === "") {
       setError("Student name cannot be blank");
       return;
     }
@@ -53,7 +53,7 @@ const Form = (props) => {
         <InterviewerList
           interviewers={props.interviewers}
           value={interviewer}
-          onChange={event => setInterviewer(event)} 
+          onChange={interviewerId => setInterviewer(interviewerId)} 
         />
       </section>
       <section className="appointment__card-right">

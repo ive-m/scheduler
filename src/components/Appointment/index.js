@@ -20,6 +20,9 @@ const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
 export default function Appointment({ id, time, interview, interviewers, bookInterview, cancelInterview }) {
+
+
+
   const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
 
   const save = (name, interviewer) => {
@@ -35,6 +38,7 @@ export default function Appointment({ id, time, interview, interviewers, bookInt
       .catch(() => transition(ERROR_SAVE, true));
   };
 
+
   const onDelete = () => {
     const appointmentId = id;
 
@@ -46,15 +50,18 @@ export default function Appointment({ id, time, interview, interviewers, bookInt
         .catch(() => transition(ERROR_DELETE, true));
     } else {
       transition(CONFIRM);
-    }
+    };
   };
 
   const onEdit = () => {
     transition(EDIT);
   };
 
+console.log('MOde DELETE', mode);
+
   return (
     <article className="appointment" data-testid="appointment">
+
       <Header id={id} time={time} />
       {mode === EMPTY ? (
         <Empty onAdd={() => transition(CREATE)} />
@@ -69,6 +76,7 @@ export default function Appointment({ id, time, interview, interviewers, bookInt
           onConfirm={onDelete}
         />
       ) : mode === SHOW ? (
+
         <Show
           student={interview.student}
           interviewer={interview.interviewer}
