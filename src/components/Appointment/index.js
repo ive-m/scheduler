@@ -9,6 +9,7 @@ import Confirm from "./Confirm";
 import Error from "./Error";
 import useVisualMode from "hooks/useVisualMode";
 
+// Mode constants
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
@@ -19,45 +20,50 @@ const EDIT = "EDIT";
 const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
-export default function Appointment({ id, time, interview, interviewers, bookInterview, cancelInterview }) {
-
-
-
+export default function Appointment({
+  id,
+  time,
+  interview,
+  interviewers,
+  bookInterview,
+  cancelInterview,
+}) {
+  // Using custom hook useVisualMode to manage component modes
   const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
 
+  // Save appointment function
   const save = (name, interviewer) => {
     const interviewData = {
       student: name,
-      interviewer
+      interviewer,
     };
 
-    transition(SAVING);
+    transition(SAVING); // Transition to the "SAVING" mode
 
-    bookInterview(id, interviewData)
-      .then(() => transition(SHOW))
-      .catch(() => transition(ERROR_SAVE, true));
+    bookInterview(id, interviewData) // Call the bookInterview function passed as a prop
+      .then(() => transition(SHOW)) // On successful save, transition to the "SHOW" mode
+      .catch(() => transition(ERROR_SAVE, true)); // On error, transition to the "ERROR_SAVE" mode
   };
 
-
+  // Delete appointment function
   const onDelete = () => {
     const appointmentId = id;
 
     if (mode === CONFIRM) {
-      transition(DELETING, true);
+      transition(DELETING, true); // Transition to the "DELETING" mode
 
-      cancelInterview(appointmentId)
-        .then(() => transition(EMPTY))
-        .catch(() => transition(ERROR_DELETE, true));
+      cancelInterview(appointmentId) // Call the cancelInterview function passed as a prop
+        .then(() => transition(EMPTY)) // On successful deletion, transition to the "EMPTY" mode
+        .catch(() => transition(ERROR_DELETE, true)); // On error, transition to the "ERROR_DELETE" mode
     } else {
-      transition(CONFIRM);
-    };
+      transition(CONFIRM); // If not in "CONFIRM" mode, transition to the "CONFIRM" mode
+    }
   };
 
   const onEdit = () => {
-    transition(EDIT);
+    transition(EDIT); // Transition to the "EDIT" mode
   };
 
-console.log('MOde DELETE', mode);
 
   return (
     <article className="appointment" data-testid="appointment">

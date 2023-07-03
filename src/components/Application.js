@@ -6,6 +6,7 @@ import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "help
 import useApplicationData from "hooks/useApplicationData";
 
 export default function Application(props) {
+  // Retrieve state and functions from the custom hook
   const {
     state,
     setDay,
@@ -13,11 +14,12 @@ export default function Application(props) {
     cancelInterview
   } = useApplicationData();
 
+  // Get the list of interviewers for the selected day
   const interviewers = getInterviewersForDay(state, state.day);
 
+  // Get the appointments for the selected day and map them to Appointment components
   const appointments = getAppointmentsForDay(state, state.day).map(
     appointment => {
-      
       return (
         <Appointment
           key={appointment.id}
@@ -28,8 +30,6 @@ export default function Application(props) {
           cancelInterview={cancelInterview}
         />
       );
-      
-
     }
   );
   return (
