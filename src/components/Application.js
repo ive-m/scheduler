@@ -14,6 +14,7 @@ export default function Application(props) {
     cancelInterview
   } = useApplicationData();
 
+
   // Get the list of interviewers for the selected day
   const interviewers = getInterviewersForDay(state, state.day);
 
