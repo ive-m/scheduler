@@ -35,21 +35,19 @@ const Form = (props) => {
     props.onSave(student, interviewer);
   };
 
-
-
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
         <form autoComplete="off" onSubmit={event => event.preventDefault()}>
-          <input
-            className="appointment__create-input text--semi-bold"
-            name={props.name}
-            type="text"
-            value={student}
-            placeholder="Enter Student Name"
-            onChange={(event) => setStudent(event.target.value)}
-            data-testid="student-name-input"
-          />
+        <input
+  className="appointment__create-input text--semi-bold"
+  type="text"
+  value={student}
+  placeholder="Enter Student Name"
+  onChange={(event) => setStudent(event.target.value)}
+  data-testid="form-student-input"
+/>
+
           <section className="appointment__validation">{error}</section>
         </form>
 
@@ -61,12 +59,8 @@ const Form = (props) => {
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions" >
-          <Button danger
-            onClick={cancel}
-          >Cancel</Button>
-          <Button confirm
-            onClick={validate}
-          >Save</Button>
+          <Button danger onClick={cancel}>Cancel</Button>
+          <Button confirm onClick={validate}>Save</Button>
         </section>
       </section>
     </main>

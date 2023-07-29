@@ -21,6 +21,7 @@ export default function Application(props) {
   // Get the appointments for the selected day and map them to Appointment components
   const appointments = getAppointmentsForDay(state, state.day).map(
     appointment => {
+      //console.log('Appointment', appointment);
       return (
         <Appointment
           key={appointment.id}
