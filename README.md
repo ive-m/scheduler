@@ -25,3 +25,10 @@ npm test
 npm run storybook
 ```
 ## Screenshots
+![Mon](https://raw.githubusercontent.com/ive-m/scheduler/641c6e8e162b3641c5cbff919794a71f04666877/docs/Mon.png) 
+![Tue](https://raw.githubusercontent.com/ive-m/scheduler/641c6e8e162b3641c5cbff919794a71f04666877/docs/Tue.png) 
+![Wed](https://raw.githubusercontent.com/ive-m/scheduler/641c6e8e162b3641c5cbff919794a71f04666877/docs/Wed.png)
+![Thu](https://raw.githubusercontent.com/ive-m/scheduler/641c6e8e162b3641c5cbff919794a71f04666877/docs/Thu.png)
+![Fri-delete](https://raw.githubusercontent.com/ive-m/scheduler/641c6e8e162b3641c5cbff919794a71f04666877/docs/Fri-delete.png)
+![Fri-edit](https://raw.githubusercontent.com/ive-m/scheduler/641c6e8e162b3641c5cbff919794a71f04666877/docs/Fri-edit.png)
+![Fri-new](https://raw.githubusercontent.com/ive-m/scheduler/641c6e8e162b3641c5cbff919794a71f04666877/docs/Fri.png)
