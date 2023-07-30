@@ -25,10 +25,24 @@ npm test
 npm run storybook
 ```
 ## Screenshots
+Appointments for Monday
 ![Mon](https://github.com/ive-m/scheduler/blob/master/docs/Mon.png?raw=true) 
+
+Appointments for Tuesday, cursor hovers on Wednesday
 ![Tue](https://github.com/ive-m/scheduler/blob/master/docs/Tue.png?raw=true) 
+
+Appointments for Wednesday including the bottom of the page to 5pm
 ![Wed](https://github.com/ive-m/scheduler/blob/master/docs/Wed.png?raw=true)
+
+Appointments for Thursday and clicked the plus sign at 12pm
 ![Thu](https://github.com/ive-m/scheduler/blob/master/docs/Thu.png?raw=true)
-![Fri-delete](https://github.com/ive-m/scheduler/blob/master/docs/Fri-delete.png?raw=true)
-![Fri-edit](https://github.com/ive-m/scheduler/blob/master/docs/Fri-edit.png?raw=true)
+
+Appointments for Friday and adding a new one at 1pm by entering the student name, selecting an interviewer and click save
 ![Fri-new](https://github.com/ive-m/scheduler/blob/master/docs/Fri.png?raw=true)
+
+Appointments for Friday and clicked edit 1pm
+![Fri-edit](https://github.com/ive-m/scheduler/blob/master/docs/Fri-edit.png?raw=true)
+
+Appointments for Friday and clicked delete 1pm
+![Fri-delete](https://github.com/ive-m/scheduler/blob/master/docs/Fri-delete.png?raw=true)
+
