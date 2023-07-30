@@ -31,7 +31,7 @@ Appointments for Monday
 Appointments for Tuesday, cursor hovers on Wednesday
 ![Tue](https://github.com/ive-m/scheduler/blob/master/docs/Tue.png?raw=true) 
 
-Appointments for Wednesday including the bottom of the page to 5pm
+Appointments for Wednesday including 5pm
 ![Wed](https://github.com/ive-m/scheduler/blob/master/docs/Wed.png?raw=true)
 
 Appointments for Thursday and clicked the plus sign at 12pm
