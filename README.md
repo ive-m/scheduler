@@ -25,10 +25,10 @@ npm test
 npm run storybook
 ```
 ## Screenshots
-![Mon](https://raw.githubusercontent.com/ive-m/scheduler/641c6e8e162b3641c5cbff919794a71f04666877/docs/Mon.png) 
-![Tue](https://raw.githubusercontent.com/ive-m/scheduler/641c6e8e162b3641c5cbff919794a71f04666877/docs/Tue.png) 
-![Wed](https://raw.githubusercontent.com/ive-m/scheduler/641c6e8e162b3641c5cbff919794a71f04666877/docs/Wed.png)
-![Thu](https://raw.githubusercontent.com/ive-m/scheduler/641c6e8e162b3641c5cbff919794a71f04666877/docs/Thu.png)
-![Fri-delete](https://raw.githubusercontent.com/ive-m/scheduler/641c6e8e162b3641c5cbff919794a71f04666877/docs/Fri-delete.png)
-![Fri-edit](https://raw.githubusercontent.com/ive-m/scheduler/641c6e8e162b3641c5cbff919794a71f04666877/docs/Fri-edit.png)
-![Fri-new](https://raw.githubusercontent.com/ive-m/scheduler/641c6e8e162b3641c5cbff919794a71f04666877/docs/Fri.png)
+![Mon](https://github.com/ive-m/scheduler/blob/master/docs/Mon.png?raw=true) 
+![Tue](https://github.com/ive-m/scheduler/blob/master/docs/Tue.png?raw=true) 
+![Wed](https://github.com/ive-m/scheduler/blob/master/docs/Wed.png?raw=true)
+![Thu](https://github.com/ive-m/scheduler/blob/master/docs/Thu.png?raw=true)
+![Fri-delete](https://github.com/ive-m/scheduler/blob/master/docs/Fri-delete.png?raw=true)
+![Fri-edit](https://github.com/ive-m/scheduler/blob/master/docs/Fri-edit.png?raw=true)
+![Fri-new](https://github.com/ive-m/scheduler/blob/master/docs/Fri.png?raw=true)
