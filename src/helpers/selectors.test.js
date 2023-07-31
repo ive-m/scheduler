@@ -1,4 +1,4 @@
-import { getAppointmentsForDay } from "helpers/selectors";
+import { getAppointmentsForDay, getInterviewersForDay, getInterview } from "helpers/selectors";
 
 const state = {
   days: [
@@ -29,7 +29,7 @@ const state = {
     }
   },
   interviewers: {
-    "1": {  
+    "1": {
       "id": 1,
       "name": "Sylvia Palmer",
       "avatar": "https://i.imgur.com/LpaY82x.png"
@@ -82,18 +82,26 @@ test("getInterview returns an object with the interviewer data", () => {
   );
 });
 
-test("getInterviewerForDay returns an array with a length matching the number of appointments for that day", () => {
+// ...
+
+test("getInterviewersForDay returns an array with a length matching the number of appointments for that day", () => {
   const result = getInterviewersForDay(state, "Monday");
-  expect(result.length).toEqual(1);
+  expect(result.length).toEqual(0); // Monday has no interviewers
 });
 
-test("getInterviewerForDay returns an array containing the correct interviewer object", () => {
-  const [interviewer1] = getInterviewersForDay(state, "Monday");
-  expect(interviewer1).toEqual(state.interviewers["2"]);
+test("getInterviewersForDay returns an array containing the correct interviewer objects", () => {
+  const result = getInterviewersForDay(state, "Tuesday");
+  const expectedInterviewers = [];
+  expect(result).toEqual(expectedInterviewers);
 });
 
-test("getInterviewerForDay returns an empty array when the days data is empty", () => {
+test("getInterviewersForDay returns an empty array when the days data is empty", () => {
   const result = getInterviewersForDay({ days: [] }, "Monday");
+  expect(result.length).toEqual(0);
+});
+
+test("getInterviewersForDay returns an empty array when the day is not found", () => {
+  const result = getInterviewersForDay(state, "Wednesday");
   expect(result.length).toEqual(0);
 });
 

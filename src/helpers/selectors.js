@@ -36,7 +36,6 @@ export function getInterview(state, interview) {
   // Return the interview object
   return interviewNew;
 }
-
 export function getInterviewersForDay(state, day) {
   const { days, interviewers } = state;
 
@@ -44,7 +43,7 @@ export function getInterviewersForDay(state, day) {
   const selectedDay = days.find(item => day === item.name);
 
   // If there are no days or the selected day is undefined, return an empty array
-  if (days.length < 1 || selectedDay === undefined) {
+  if (!selectedDay || !selectedDay.interviewers) {
     return [];
   }
 
