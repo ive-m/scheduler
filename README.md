@@ -24,7 +24,9 @@ npm test
 ```sh
 npm run storybook
 ```
+
 ## Screenshots
+
 Appointments for Monday
 ![Mon](https://github.com/ive-m/scheduler/blob/master/docs/Mon.png?raw=true) 
 

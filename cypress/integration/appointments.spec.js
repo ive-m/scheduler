@@ -35,7 +35,7 @@ describe("Appointments", () => {
     cy.get("[alt=Delete]").first().click({ force: true });
     cy.contains("Confirm").click();
     cy.contains("Deleting").should("exist", { retry: 500 }); // Retry the assertion for up to 5000ms
-    cy.contains("Deleting").should("not.exist", { timeout: 10000 }); // Wait for "deleting" text to disappear
+    cy.contains("Deleting").should("not.exist", { timeout: 10000 }); // Wait for "Deleting" text to disappear
   });
 
 })

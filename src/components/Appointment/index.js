@@ -30,28 +30,23 @@ export default function Appointment({
 }) {
   // Using custom hook useVisualMode to manage component modes
   const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
-
   // Save appointment function
   const save = (name, interviewer) => {
     const interviewData = {
       student: name,
       interviewer,
     };
-
     transition(SAVING); // Transition to the "SAVING" mode
-
     bookInterview(id, interviewData) // Call the bookInterview function passed as a prop
       .then(() => transition(SHOW)) // On successful save, transition to the "SHOW" mode
       .catch(() => transition(ERROR_SAVE, true)); // On error, transition to the "ERROR_SAVE" mode
   };
-
   // Delete appointment function
   const onDelete = () => {
     const appointmentId = id;
 
     if (mode === CONFIRM) {
       transition(DELETING, true); // Transition to the "DELETING" mode
-
       cancelInterview(appointmentId) // Call the cancelInterview function passed as a prop
         .then(() => transition(EMPTY)) // On successful deletion, transition to the "EMPTY" mode
         .catch(() => transition(ERROR_DELETE, true)); // On error, transition to the "ERROR_DELETE" mode
@@ -59,15 +54,12 @@ export default function Appointment({
       transition(CONFIRM); // If not in "CONFIRM" mode, transition to the "CONFIRM" mode
     }
   };
-
   const onEdit = () => {
     transition(EDIT); // Transition to the "EDIT" mode
   };
 
-
   return (
     <article className="appointment" data-testid="appointment">
-
       <Header id={id} time={time} />
       {mode === EMPTY ? (
         <Empty onAdd={() => transition(CREATE)} />

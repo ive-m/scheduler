@@ -17,7 +17,6 @@ export default function useApplicationData() {
       day: day
     }));
   };
-
   // Fetch data from the API on initial component mount
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +27,6 @@ export default function useApplicationData() {
           axios.get("/api/appointments"),
           axios.get("/api/interviewers")
         ]);
-
         // Update the state with the fetched data
         setState((prevState) => ({
           ...prevState,
@@ -40,7 +38,6 @@ export default function useApplicationData() {
         console.error("Error fetching data:", error);
       }
     };
-
     fetchData();
   }, []);
 
@@ -48,7 +45,6 @@ export default function useApplicationData() {
   useEffect(() => {
     updateSpots();
   }, [state.appointments]);
-
   // Function to book an interview
   function bookInterview(id, interview) {
     const appointment = {
@@ -59,7 +55,6 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
-
     // Send a PUT request to update the appointments table with the new interview data
     return axios
       .put(`http://localhost:8001/api/appointments/${id}`, { interview })
@@ -68,7 +63,6 @@ export default function useApplicationData() {
         setState((prevState) => ({ ...prevState, appointments }));
       });
   }
-
   // Function to cancel an interview
   function cancelInterview(id) {
     const appointment = {
@@ -88,7 +82,6 @@ export default function useApplicationData() {
         setState((prevState) => ({ ...prevState, appointments }));
       });
   }
-
   // Function to update the number of spots available for each day
   function updateSpots() {
     setState((prevState) => {
@@ -107,7 +100,6 @@ export default function useApplicationData() {
       return { ...prevState, days: updatedDays };
     });
   }
-
   // Return the state and functions as an object
   return {
     state,

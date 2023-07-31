@@ -19,14 +19,12 @@ export function getAppointmentsForDay(state, day) {
 
 export function getInterview(state, interview) {
   let interviewNew = {};
-
   // If the interview object is falsy (null or undefined), return null
   if (!interview) {
     return null;
   }
 
   const interviewerNo = state.interviewers[interview.interviewer];
-
   // Create a new interview object with the student and interviewer information
   interviewNew = {
     student: interview.student,
@@ -46,13 +44,11 @@ export function getInterviewersForDay(state, day) {
   if (!selectedDay || !selectedDay.interviewers) {
     return [];
   }
-
   // Map over the interviewer IDs in the selected day's interviewers array
   // Return the corresponding interviewer objects from the state's interviewers object
   const daysInterviewers = selectedDay.interviewers.map(
     interviewer => interviewers[interviewer]
   );
-
   // Return the array of interviewers for the selected day
   return daysInterviewers;
 }
